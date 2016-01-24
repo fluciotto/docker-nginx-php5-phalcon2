@@ -4,7 +4,7 @@ server {
 	server_name localhost.dev;
 
 	index index.php index.html index.htm;
-	set $root_path '/var/www/$webpublic';
+	set $root_path '/var/www';
 	root $root_path;
 
 	try_files $uri $uri/ @rewrite;
