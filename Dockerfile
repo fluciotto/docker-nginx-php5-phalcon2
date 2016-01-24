@@ -1,4 +1,4 @@
-FROM debian:wheezy
+FROM ubuntu:14.04
 
 RUN apt-get update && apt-get -y install \
 	git \
@@ -24,6 +24,8 @@ ADD default /etc/nginx/sites-available/default
 
 RUN mkdir /var/www
 RUN echo "<?php phpinfo(); ?>" > /var/www/index.php
+
+VOLUME ["/var/www"]
 
 EXPOSE 80
 
