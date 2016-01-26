@@ -22,6 +22,10 @@ RUN echo 'extension=phalcon.so' >> /etc/php5/fpm/conf.d/30-phalcon.ini
 ADD nginx.conf /etc/nginx/nginx.conf
 ADD default /etc/nginx/sites-available/default
 
+# forward request and error logs to docker log collector
+RUN ln -sf /dev/stdout /var/log/nginx/access.log \
+	&& ln -sf /dev/stderr /var/log/nginx/error.log
+
 RUN mkdir /var/www
 RUN echo "<?php phpinfo(); ?>" > /var/www/index.php
 
