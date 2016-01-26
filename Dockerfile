@@ -1,5 +1,7 @@
 FROM ubuntu:15.04
 
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install software-properties-common
+
 RUN apt-add-repository ppa:phalcon/stable
 
 RUN apt-get update && apt-get -y install \
