@@ -33,7 +33,7 @@ ADD default /etc/nginx/sites-available/default
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 	&& ln -sf /dev/stderr /var/log/nginx/error.log
 
-RUN mkdir /var/www
+# RUN mkdir /var/www
 RUN echo "<?php phpinfo(); ?>" > /var/www/index.php
 
 VOLUME ["/var/www"]
