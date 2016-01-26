@@ -1,5 +1,7 @@
 FROM ubuntu:15.04
 
+RUN apt-add-repository ppa:phalcon/stable
+
 RUN apt-get update && apt-get -y install \
 	git \
 	nginx-extras \
@@ -11,13 +13,14 @@ RUN apt-get update && apt-get -y install \
 	make \
 	php5-mysql \
 	curl \
-	php5-curl
+	php5-curl \
+	php5-phalcon
 
-RUN git clone --depth=1 http://github.com/phalcon/cphalcon.git -b master cphalcon
-RUN cd cphalcon && git checkout tags/phalcon-v2.0.9
+# RUN git clone --depth=1 http://github.com/phalcon/cphalcon.git -b master cphalcon
+# RUN cd cphalcon && git checkout tags/phalcon-v2.0.9
 # RUN cd cphalcon/build && ./install;
 # From https://github.com/phalcon/cphalcon/issues/1385#issuecomment-26410069
-RUN cd cphalcon/build/64bits && phpize && ./configure CFLAGS="-O2 -g -fomit-frame-pointer -DPHALCON_RELEASE" && make && make install
+# RUN cd cphalcon/build/64bits && phpize && ./configure CFLAGS="-O2 -g -fomit-frame-pointer -DPHALCON_RELEASE" && make && make install
 
 RUN echo 'extension=phalcon.so' >> /etc/php5/fpm/conf.d/30-phalcon.ini
 
