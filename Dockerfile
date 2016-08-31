@@ -10,6 +10,7 @@ RUN apt-get update && apt-get -y install \
 	php5-cli \
 	php5-dev \
 	php5-fpm \
+	php5-gd \
 	libpcre3-dev \
 	gcc \
 	make \
